@@ -10,8 +10,9 @@ const form = document.querySelector('.register__form'),
         name: '',
         password: '',
     }
-    let symbolsList = ['_', '+', '-', '=']; 
+    const symbolsList = ['_', '+', '-', '=']; 
     let letterBig = '';
+    let symbol = '';
     
     
     function registerForm () {
@@ -33,22 +34,26 @@ const form = document.querySelector('.register__form'),
             h2.textContent = '';
             passwordForm.classList.remove('wrong-password');
         }
-
+        
 
         const passwordCase = password.split('').map((letter) => {
             if (letter.toUpperCase() == letter) {
                 letterBig++;
             }
-        });
-
-        const passwordSymbol = password.split('').map((symbol) => {
-            if (symbol == symbolsList[symbol]) {
-                h2.textContent = 'nice password';
+            for (let i = 0; i < symbolsList.length; i++) {
+                if (symbolsList[i] == letter) {
+                    symbol++;
+                }
             }
         });
 
+        
+
         if (letterBig < 3 ) {
             h2.textContent = 'password bad';
+        } 
+        if (symbol < 2) {
+            h2.textContent = 'easy password';
         }
 
         h1.textContent = "autorisation";
@@ -67,4 +72,3 @@ const form = document.querySelector('.register__form'),
     }
 registerButton.addEventListener("click", registerForm);
 loginButton.addEventListener("click", loginForm);
-
