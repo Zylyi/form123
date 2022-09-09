@@ -16,7 +16,7 @@ const arr_RU = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й'
 
 let letterBig = '';
 let symbol = '';
-    
+let rus = '';
     
 function registerForm () {
     let name = nameForm.value,
@@ -48,15 +48,23 @@ function registerForm () {
                 symbol++;
             }
         }
+        for (let i = 0; i < arr_ru.length; i++) {
+            if (arr_RU[i] == letter) {
+                rus++;
+            }
+            if (arr_ru[i] == letter) {
+                rus++;
+            }
+        }
     });
     
 
-    if (letterBig < 3 || symbol < 2) {
+    if (rus >= 1 || letterBig < 3 || symbol < 2) {
         h2.textContent = 'password bad';
         user.password = '';
         passwordForm.classList.toggle('wrong-password');
     } 
-    
+
     h1.textContent = "autorisation";
     form.reset()
 }
