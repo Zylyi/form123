@@ -19,16 +19,18 @@ let symbol = '';
 let rus = '';
     
 function registerForm () {
+    h1.textContent = "Registration";
     let name = nameForm.value,
         password = passwordForm.value;
+
+    if (name == user.name && password == user.password) {
+        h2.textContent = `login ${name} используется`;
+        user.name = '';
+    } 
 
     user.name = name;
     user.password = password;
 
-    if (name == user.name) {
-        h2.textContent = `login ${name} используется`;
-        user.name = '';
-    } 
     if (password.length < 2) {
         passwordForm.classList.toggle('wrong-password');
         h2.textContent = 'password short';
@@ -66,6 +68,7 @@ function registerForm () {
     } 
 
     h1.textContent = "autorisation";
+    h2.textContent = '-----------';
     form.reset()
 }
     
